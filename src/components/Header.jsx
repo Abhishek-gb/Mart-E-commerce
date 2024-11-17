@@ -6,7 +6,7 @@ import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-white">
+    <nav className="navbar navbar-expand-lg bg-body-white ">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           <img src={Ait} alt="ait" width="100%" height="50" /> 

@@ -1,8 +1,17 @@
 import React from 'react'
+import DiscountProduct from './DiscountProduct'
+import Products from './Products'
+import ImageTextSlider from './Slider/ImageTextSlider'
+import Service from './Service'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+    <ImageTextSlider/>
+    <Service/>
+    <DiscountProduct/>
+    <Products/>
+    </>
   )
 }
 
