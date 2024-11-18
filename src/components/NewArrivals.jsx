@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { discoutProducts } from "../Data";
+import { products as newArrivalsData } from "../Data";
 import { useCart } from "../components/CartContext";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { FaRegHeart } from "react-icons/fa";
-import "./Addtocart.css"
+import "react-toastify/dist/ReactToastify.css";
+import "./Addtocart.css";
 
-const DiscountProduct = () => {
+const NewArrivals = () => {
   const { addToCart } = useCart();
 
   const handleAddToCart = (product) => {
@@ -15,30 +14,20 @@ const DiscountProduct = () => {
     toast.success(`${product.productName} added to cart!`);
   };
 
+  const nonExcludedNewArrivals = newArrivalsData.filter(
+    (product) => !["sofa", "chair", "watch"].includes(product.category)
+  );
+
   return (
     <div className="container my-4 p-5 m-5">
       <ToastContainer position="top-right" autoClose={2000} hideProgressBar />
-      <div className="d-flex justify-content-between align-items-center">
       <h2 className="text-center" style={{ fontSize: "2.5rem", fontWeight: "bold" }}>
-          Big Discount
-        </h2>
-      </div>
+        New Arrivals
+      </h2>
       <div className="row">
-        {discoutProducts.map((product) => (
+        {nonExcludedNewArrivals.map((product) => (
           <div className="col-md-4 col-lg-4 mb-4" key={product.id}>
             <div className="card h-100 position-relative">
-              <span
-                className="badge badge-danger position-absolute shadow"
-                style={{
-                  top: "10px",
-                  left: "10px",
-                  backgroundColor: "#003366",
-                  color: "white",
-                  borderRadius: "15px",
-                }}
-              >
-                {product.discount}% OFF
-              </span>
               <span
                 className="position-absolute"
                 style={{
@@ -50,13 +39,11 @@ const DiscountProduct = () => {
               >
                 <FaRegHeart />
               </span>
-              <Link to={`/product/${product.id}`}>
-                <img
-                  src={product.imgUrl}
-                  className="card-img-top"
-                  alt={product.productName}
-                />
-              </Link>
+              <img
+                src={product.imgUrl}
+                className="card-img-top"
+                alt={product.productName}
+              />
               <div className="card-body">
                 <h5 className="card-title">{product.productName}</h5>
                 <p className="card-text">
@@ -87,4 +74,4 @@ const DiscountProduct = () => {
   );
 };
 
-export default DiscountProduct;
+export default NewArrivals;

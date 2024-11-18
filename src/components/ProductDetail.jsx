@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { discoutProducts } from "../Data";
+import Products from "./Products";
+import DiscountProduct from "./DiscountProduct";
 
 const ProductDetail = () => {
   const { id } = useParams(); 
@@ -20,6 +22,7 @@ const ProductDetail = () => {
   }
 
   return (
+    <>
     <div className="container my-4">
       <div className="row">
         <div className="col-md-6">
@@ -48,6 +51,9 @@ const ProductDetail = () => {
         </div>
       </div>
     </div>
+    <DiscountProduct/>
+    <Products/>
+    </>
   );
 };
 

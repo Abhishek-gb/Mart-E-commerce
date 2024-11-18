@@ -2,9 +2,10 @@ import React from 'react';
 import { serviceData } from "../Data";
 
 
+
 const Service = () => {
   return (
-    <div style={styles.gridContainer}>
+    <div className='p-5 m-5' style={styles.gridContainer}>
       {serviceData.map((service, index) => (
         <div key={index} style={{ ...styles.card, backgroundColor: service.bg }}>
           <div style={styles.icon}>{service.icon}</div>
@@ -25,7 +26,7 @@ const styles = {
   },
   card: {
     padding: '20px',
-    borderRadius: '10px',
+    borderRadius: '0px',
     textAlign: 'center',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   },

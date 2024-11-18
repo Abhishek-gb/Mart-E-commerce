@@ -1,12 +1,13 @@
-// src/components/Cart.js
 import React from "react";
 import { useCart } from "./CartContext";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
 
-  // Calculate total amount
-  const totalAmount = cart.reduce((total, product) => total + product.price * product.quantity, 0);
+  const totalAmount = cart.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
 
   return (
     <div className="container my-4">
@@ -15,50 +16,78 @@ const Cart = () => {
         <p>Your cart is empty!</p>
       ) : (
         <div className="row">
-          {cart.map((product) => (
-            <div className="col-md-4 col-lg-4 mb-4" key={product.id}>
-              <div className="card h-100">
-                <img
-                  src={product.imgUrl}
-                  className="card-img-top"
-                  alt={product.productName}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{product.productName}</h5>
-                  <p className="card-text">
-                    <strong>${product.price}</strong>
-                  </p>
-                  <div className="d-flex align-items-center">
-                    <button
-                      className="btn btn-outline-secondary"
-                      onClick={() => updateQuantity(product.id, product.quantity - 1)}
-                      disabled={product.quantity <= 1}
-                    >
-                      -
-                    </button>
-                    <span className="mx-2">{product.quantity}</span>
-                    <button
-                      className="btn btn-outline-secondary"
-                      onClick={() => updateQuantity(product.id, product.quantity + 1)}
-                    >
-                      +
-                    </button>
+          <div className="col-md-8">
+            <div className="d-flex flex-column">
+              {cart.map((product) => (
+                <div className="mb-4" key={product.id}>
+                  <div className="card w-100 h-100 position-relative">
+                    <div className="d-flex">
+                      <img
+                        src={product.imgUrl}
+                        className="card-img-top"
+                        alt={product.productName}
+                        style={{
+                          width: "150px",
+                          height: "150px",
+                          objectFit: "cover",
+                        }}
+                      />
+
+                      <div className="card-body d-flex flex-column justify-content-between">
+                        <button
+                          className="btn fw-bold position-absolute top-0 end-0 m-2"
+                          onClick={() => removeFromCart(product.id)}
+                        >
+                          x
+                        </button>
+                        <h5 className="card-title">{product.productName}</h5>
+                        <p className="card-text">
+                          <strong>${product.price}</strong>
+                        </p>
+                        <div className="d-flex align-items-center">
+                          <button
+                            className="btn btn-outline-secondary"
+                            onClick={() =>
+                              updateQuantity(product.id, product.quantity - 1)
+                            }
+                            disabled={product.quantity <= 1}
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{product.quantity}</span>
+                          <button
+                            className="btn btn-outline-secondary"
+                            onClick={() =>
+                              updateQuantity(product.id, product.quantity + 1)
+                            }
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <button
-                    className="btn btn-danger mt-3"
-                    onClick={() => removeFromCart(product.id)}
-                  >
-                    Remove from Cart
-                  </button>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="col-md-4 mt-4 text-center">
+            <div
+              className="card"
+              style={{
+                height: "150px",
+                padding: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <h4>Total Amount: ${totalAmount.toFixed(2)}</h4>
+            </div>
+          </div>
         </div>
       )}
-      <div className="mt-4">
-        <h4>Total Amount: ${totalAmount.toFixed(2)}</h4>
-      </div>
     </div>
   );
 };
