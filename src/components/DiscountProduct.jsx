@@ -5,7 +5,7 @@ import { useCart } from "../components/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaRegHeart } from "react-icons/fa";
-import "./Addtocart.css"
+import "./Addtocart.css";
 
 const DiscountProduct = () => {
   const { addToCart } = useCart();
@@ -18,8 +18,11 @@ const DiscountProduct = () => {
   return (
     <div className="container my-4 p-5 m-5">
       <ToastContainer position="top-right" autoClose={2000} hideProgressBar />
-      <div className="d-flex justify-content-between align-items-center">
-      <h2 className="text-center" style={{ fontSize: "2.5rem", fontWeight: "bold" }}>
+      <div className="text-center mb-5">
+        <h2
+          className="big-discount-title"
+          style={{ fontSize: "2.5rem", fontWeight: "bold" }}
+        >
           Big Discount
         </h2>
       </div>

@@ -14,7 +14,7 @@ const Products = () => {
     toast.success(`${product.productName} added to cart!`);
   };
 
-  const nonSofaProducts = products.filter((product) => product.category == "sofa");
+  const nonSofaProducts = products.filter((product) => product.category === "sofa");
 
   return (
     <div className="container my-4 p-5 m-5">
@@ -50,19 +50,14 @@ const Products = () => {
                   <strong>${product.price}</strong>
                 </p>
                 <button
-                  className="btn rounded-circle position-absolute"
+                  className="btn add-to-cart-btn rounded-circle position-absolute"
                   style={{
                     right: "10px",
                     bottom: "10px",
-                    width: "50px",  
-                    height: "50px",  
-                    fontSize: "30px",  
-                    color: "#003366", 
-                    border: "none",  
-                    display: "flex",
-                    justifyContent: "center",  
-                    alignItems: "center", 
-                    padding: "0", 
+                    width: "40px",  
+                    height: "40px",  
+                    padding: "0",  
+                    fontSize: "20px",  
                   }}
                   onClick={() => handleAddToCart(product)}  
                 >

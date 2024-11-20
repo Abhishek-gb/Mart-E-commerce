@@ -1,12 +1,10 @@
-/* Make the navbar sticky at the top */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1000; /* Ensure the navbar stays above other content */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: shadow effect */
+  z-index: 1000; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
-/* Add a background color for the navbar so it stays visible while scrolling */
 .bg-body-white {
   background-color: white !important;
 }
